@@ -25,7 +25,7 @@ if [ -d ./backups ]; then
 fi
 docker compose up -d
 
-sleep 10
+sleep 5
 
 if [ -d ./backups ] && ls ./backups/db-*.sql >/dev/null 2>&1; then
     docker exec -i sae-dolibarr-mariadb-1 mariadb -u root -proot dolidb < $(ls -1t ./backups/db-*.sql | head -n1)
@@ -33,6 +33,11 @@ if [ -d ./backups ] && ls ./backups/db-*.sql >/dev/null 2>&1; then
     docker compose restart web
 fi
 sleep 5
+
+# dolidbuser needs the FILE privilege for LOAD DATA in import_csv.sh
+docker exec -i sae-dolibarr-mariadb-1 mariadb -u root -proot \
+    -e "GRANT FILE ON *.* TO 'dolidbuser'@'%'; FLUSH PRIVILEGES;"
+
 
 echo "Dolibarr is up at http://localhost:8080"
 echo "Admin login: admin / admin (change immediately)"
