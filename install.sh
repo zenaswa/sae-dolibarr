@@ -25,7 +25,7 @@ if [ -d ./backups ]; then
 fi
 docker compose up -d
 
-sleep 3
+sleep 10
 
 if [ -d ./backups ] && ls ./backups/db-*.sql >/dev/null 2>&1; then
     docker exec -i sae-dolibarr-mariadb-1 mariadb -u root -proot dolidb < $(ls -1t ./backups/db-*.sql | head -n1)
