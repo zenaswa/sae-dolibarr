@@ -39,3 +39,29 @@
 * À faire: finir et tester
 * Difficultés rencontrées: volumes paths incompatible windows, incomprehension des variable d'env CRON
 
+
+## Séance n° 5
+
+* 06/10 - 16h
+* Fait: install.sh
+* À faire: finir import_csv.sh, créer backup.sh
+* Difficultés rencontrées: syntaxe shell
+
+
+## Séance n° 6
+
+* 07/10 - 19h30
+* Fait: import.csv backup.csv
+* À faire: test PRA complet, rédaction du README
+* Difficultés rencontrées:
+  * Commande `mysql` absente des images MariaDB récentes (remplacée par `mariadb`)
+  * Privilège FILE manquant pour LOAD DATA (erreur "Access denied")
+
+
+## Séance n° 7
+
+* 08/10 - 17h30
+* Fait:
+  * Tests PRA valides
+  * Corrections : ordre du GRANT FILE, chemins des volumes
+  * Rédaction du README.md
